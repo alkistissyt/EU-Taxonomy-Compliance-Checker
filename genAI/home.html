@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EU Taxonomy Compliance Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .header {
+            background-color: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            flex-grow: 1;
+            text-align: left;
+        }
+        .menu-icon {
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: #003366;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .dropdown-menu a:hover {
+            background-color: #f4f4f4;
+        }
+        .landing {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: white;
+        }
+        .landing h2 {
+            font-size: 36px;
+            color: #003366;
+            margin-bottom: 20px;
+        }
+        .landing p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        .content-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 60px;
+        }
+        .content-section.reverse {
+            flex-direction: row-reverse;
+        }
+        .plot {
+            width: 45%;
+            height: 200px;
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .plot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .text {
+            width: 45%;
+            text-align: left;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .text h3 {
+            font-size: 24px;
+            color: #003366;
+            margin-bottom: 10px;
+        }
+        .text p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+        }
+        .learn-more {
+            font-size: 24px;
+            color: #003366;
+            cursor: pointer;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        .footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>EU Taxonomy Compliance Checker</h1>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="home.html">Home</a>
+            <a href="AboutPage.html">About</a>
+            <a href="#">Services</a>
+            <a href="Contact.html">Contact</a>
+        </div>
+    </div>
+
+    <div class="landing">
+        <h2>Welcome to EU Taxonomy Compliance Checker</h2>
+        <p>
+            We provide cutting-edge tools to help investors and banks assess the eligibility and alignment of financing contracts with the EU Taxonomy. Our platform ensures compliance with regulatory standards while simplifying complex processes.
+        </p>
+
+        <!-- First Section: Plot on the left, text on the right -->
+        <div class="content-section">
+            <div class="plot">
+                <img src="Screenshot 2025-03-18 172559.png" alt="Graph 1">
+            </div>
+            <div class="text">
+                <h3>Eligibility Assessment</h3>
+                <p>
+                    Our platform analyzes your financing contracts to determine their eligibility under the EU Taxonomy. We provide detailed reports and actionable insights to ensure compliance.
+                </p>
+            </div>
+        </div>
+
+        <!-- Second Section: Plot on the right, text on the left -->
+        <div class="content-section reverse">
+            <div class="plot">
+                <img src="Screenshot 2025-03-18 172520.png" alt="Graph 2">
+            </div>
+            <div class="text">
+                <h3>Alignment Analysis</h3>
+                <p>
+                    We evaluate the alignment of your contracts with the EU Taxonomy's technical screening criteria. Our tools help you identify areas for improvement and optimize your compliance strategy.
+                </p>
+            </div>
+        </div>
+
+      
+         <!-- Learn More Button -->
+         <a href="AboutPage.html" class="learn-more">
+            &#8595; Learn More
+        </a>
+
+
+    <div class="footer">
+        &copy; 2023 EU Taxonomy Compliance Checker. All rights reserved.
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const dropdownMenu = document.getElementById("dropdownMenu");
+            dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+        }
+
+        function scrollToNextSection() {
+            // Replace with the ID of the next section or page
+            const nextSection = document.getElementById("nextSection");
+            if (nextSection) {
+                nextSection.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.addEventListener("click", (event) => {
+            if (!event.target.matches(".menu-icon")) {
+                const dropdownMenu = document.getElementById("dropdownMenu");
+                dropdownMenu.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

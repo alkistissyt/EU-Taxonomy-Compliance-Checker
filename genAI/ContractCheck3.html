@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check for EU Taxonomy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .menu-icon {
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: #003366;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .dropdown-menu a:hover {
+            background-color: #f4f4f4;
+        }
+        .banner {
+            background-color: #00509e;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .banner h2 {
+            margin: 0;
+            font-size: 28px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .drop-zone {
+            width: 300px;
+            height: 150px;
+            border: 2px dashed #aaa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: white;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .drop-zone.highlight {
+            border-color: blue;
+        }
+        .file-name {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:disabled {
+            background-color: gray;
+            cursor: not-allowed;
+        }
+        .footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .loading-message {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #003366;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>EU Taxonomy Compliance Checker</h1>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="home.html">Home</a>
+            <a href="AboutPage.html">About</a>
+            <a href="#">Services</a>
+            <a href="Contact.html">Contact</a>
+        </div>
+    </div>
+    <div class="banner">
+        <h2>Check Your Financing Contract for EU Taxonomy Compliance</h2>
+    </div>
+    <div class="container">
+        <div id="dropZone" class="drop-zone">Drag & Drop a file here or click to upload</div>
+        <input type="file" id="fileInput" hidden>
+        <p id="fileName" class="file-name"></p>
+        <button id="accessButton" disabled>Access</button>
+    </div>
+    
+    <div class="footer">
+        &copy; 2023 EU Taxonomy Compliance Checker. All rights reserved.
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-message">Checking the file... Please be patient.</div>
+    </div>
+
+    <script>
+        const dropZone = document.getElementById("dropZone");
+        const fileInput = document.getElementById("fileInput");
+        const fileNameDisplay = document.getElementById("fileName");
+        const accessButton = document.getElementById("accessButton");
+        const dropdownMenu = document.getElementById("dropdownMenu");
+        const loadingOverlay = document.getElementById("loadingOverlay");
+        let selectedFile = null;
+
+        dropZone.addEventListener("click", () => fileInput.click());
+
+        fileInput.addEventListener("change", (event) => {
+            handleFile(event.target.files[0]);
+        });
+
+        dropZone.addEventListener("dragover", (event) => {
+            event.preventDefault();
+            dropZone.classList.add("highlight");
+        });
+
+        dropZone.addEventListener("dragleave", () => {
+            dropZone.classList.remove("highlight");
+        });
+
+        dropZone.addEventListener("drop", (event) => {
+            event.preventDefault();
+            dropZone.classList.remove("highlight");
+            if (event.dataTransfer.files.length > 0) {
+                handleFile(event.dataTransfer.files[0]);
+            }
+        });
+
+        function handleFile(file) {
+            selectedFile = file;
+            fileNameDisplay.textContent = file.name;
+            accessButton.disabled = false;
+        }
+
+        accessButton.addEventListener("click", () => {
+            if (selectedFile) {
+                // Show loading overlay
+                loadingOverlay.style.display = "flex";
+
+                // Simulate file processing (replace with actual processing logic)
+                setTimeout(() => {
+                    // Hide loading overlay after processing is done
+                    loadingOverlay.style.display = "none";
+                    alert("File processing complete: " + selectedFile.name);
+                }, 3000); // Simulate a 3-second delay
+            }
+        });
+
+        function toggleMenu() {
+            dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.addEventListener("click", (event) => {
+            if (!event.target.matches(".menu-icon")) {
+                dropdownMenu.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

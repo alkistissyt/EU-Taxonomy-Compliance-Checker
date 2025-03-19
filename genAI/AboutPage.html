@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - EU Taxonomy Compliance Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .header {
+            background-color: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            flex-grow: 1;
+            text-align: left;
+        }
+        .menu-icon {
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: #003366;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .dropdown-menu a:hover {
+            background-color: #f4f4f4;
+        }
+        .section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .section h2 {
+            font-size: 36px;
+            color: #003366;
+            margin-bottom: 20px;
+        }
+        .section p {
+            font-size: 18px;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        .mission-section {
+            background-color: #e8f0fe; /* Light blue background */
+           
+        }
+        .team-section {
+            background-color: #e8f0fe;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto 40px;
+            text-align: left;
+        }
+        .team-contact h3, .legal-contact h3 {
+            font-size: 24px;
+            color: #00509e;
+            margin-bottom: 20px;
+        }
+        .team-contact p, .legal-contact p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+        }
+    
+        .team-contact, .legal-contact {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto 40px;
+            text-align: left;
+        }
+       
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #e8f0fe;
+            padding: 40px 20px;
+            border-radius: 10px;
+        }
+       
+        .stats div {
+            text-align: center;
+        }
+        .stats span {
+            font-size: 24px;
+            color: #00509e;
+        }
+        .how-it-works {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-left: 5px solid #003366;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+      .try-it-button {
+        display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #00509e;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .try-it-button:hover {
+            background-color: #003366;
+        }
+        .footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>EU Taxonomy Compliance Checker</h1>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+
+    <div class="section mission-section">
+        <h2>Our Mission</h2>
+        <p>
+            We empower businesses and financial institutions to ensure compliance with the EU Taxonomy framework. Our platform provides seamless verification of financial contracts against sustainability criteria, ensuring transparency and compliance.By leveraging AI to transform ESG compliance, our solution offers financial institutions and enterprises a cost-effective, automated, and real-time ESG compliance framework, reducing regulatory burdens and enhancing corporate sustainability efforts.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Who Are We?</h2>
+        <div class="team-section">
+            <h3>Our Team</h3>
+            <ul>
+                <li><strong>AI & Data Engineers</strong> - Building cutting-edge algorithms to analyze and verify compliance.</li>
+                <li><strong>Regulatory Experts</strong> - Ensuring our solutions align with the latest EU Taxonomy regulations.</li>
+                <li><strong>Business Development & Sales</strong> - Helping clients integrate our platform into their workflows.</li>
+                <li><strong>Product & UX Designers</strong> - Creating intuitive and user-friendly interfaces.</li>
+                <li><strong>Legal & Compliance Advisors</strong> - Providing expert guidance on legal and compliance matters.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section" style="background-color: #e8f0fe;">
+        <h2>Who Trusted Us</h2>
+        <div class="stats">
+            <div>
+                <span>5,000+</span><br>Verified Contracts
+            </div>
+            <div>
+                <span>1,200+</span><br>Trusted Clients
+            </div>
+            <div>
+                <span>50+</span><br>Financial Institutions
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>How It Works</h2>
+        <div class="how-it-works">
+            <p><strong>Step 1:</strong> Upload your financial contract securely.</p>
+            <p><strong>Step 2:</strong> Our AI-powered engine analyzes the document for compliance.</p>
+            <p><strong>Step 3:</strong> Receive a detailed report on eligibility and alignment scores.</p>
+            <p><strong>Step 4:</strong> Download your compliance certification.</p>
+        </div>
+        <a href="ContractCheck3.html" class="try-it-button">Try It</a>
+    </div>
+
+    <div class="footer">
+        &copy; 2023 EU Taxonomy Compliance Checker. All rights reserved.
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const dropdownMenu = document.getElementById("dropdownMenu");
+            dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.addEventListener("click", (event) => {
+            if (!event.target.matches(".menu-icon")) {
+                const dropdownMenu = document.getElementById("dropdownMenu");
+                dropdownMenu.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

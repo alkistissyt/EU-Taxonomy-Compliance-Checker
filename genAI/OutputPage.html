@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EU Taxonomy Compliance Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            flex-grow: 1;
+            text-align: left;
+        }
+        .menu-icon {
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: #003366;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .dropdown-menu a:hover {
+            background-color: #f4f4f4;
+        }
+        .results-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            margin: 20px auto;
+        }
+        .results-container h1 {
+            color: #003366;
+            margin-bottom: 20px;
+            font-size: 28px; /* Ensure the header is large and visible */
+        }
+        .results {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .results span {
+            font-weight: bold;
+            color: #00509e;
+        }
+        .download-links {
+            margin-top: 20px;
+        }
+        .download-links a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #00509e;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .download-links a:hover {
+            background-color: #003366;
+        }
+        .footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>EU Taxonomy Compliance Checker</h1>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="home.html">Home</a>
+            <a href="AboutPage.html">About</a>
+            <a href="#">Services</a>
+            <a href="Contact.html">Contact</a>
+        </div>
+    </div>
+    <div class="results-container">
+        <h1>EU Taxonomy Compliance Results</h1> <!-- This header should now be visible -->
+        <div class="results">
+            The provided file meets the criteria of:
+            <br><br>
+            <span>Eligibility Test:</span> 85%
+            <br>
+            <span>Alignment Test:</span> 72%
+        </div>
+        <div class="download-links">
+            <a href="analytical-document.pdf" download>Download Analytical Document</a>
+        </div>
+    </div>
+    <div class="footer">
+        &copy; 2023 EU Taxonomy Compliance Checker. All rights reserved.
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const dropdownMenu = document.getElementById("dropdownMenu");
+            dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.addEventListener("click", (event) => {
+            if (!event.target.matches(".menu-icon")) {
+                const dropdownMenu = document.getElementById("dropdownMenu");
+                dropdownMenu.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>
