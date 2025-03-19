@@ -37,6 +37,14 @@ Finalize compliance automation for financial contracts.
 
 3.For full functionality, future updates will integrate both sections.
 
+### Testing the Functionality
+
+For testing the functionality of the compliance checker, please contact the collaborators on GitHub who can provide:
+
+-Manually completed contracts for reference.
+
+-The corresponding XLS file containing the taxonomy requirements used for evaluation.
+
 💡 Contributions & suggestions are welcome!
 
 
